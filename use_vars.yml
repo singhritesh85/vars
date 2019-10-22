@@ -1,0 +1,17 @@
+---
+- name: use_vars.yml
+  hosts: all
+  vars:
+    val1: docker*
+    val2: docker
+  tasks:
+  - name: install packages
+    apt:
+      name: "{{val1}}"
+      state: present
+      force_apt_get: yes
+
+  - name: start service
+    service:
+      name: "{{val2}}"
+      state: started
